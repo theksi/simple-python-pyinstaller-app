@@ -22,11 +22,6 @@ pipeline {
             }
         }
         stage('BuildFinops Alarms') {
-            agent {
-                docker {
-                    image 'alpine:3'
-                }
-            }
             matrix {
                 axes {
                     axis {
@@ -34,14 +29,18 @@ pipeline {
                         values 'us-east-1', 'eu-west-1'
                     }
                 }
-                steps {
-                    sh 'echo "Building xxxx"'
+            }
+            stage('BuildFinops Service-specific alerts') {
+                agent {
+                    docker {
+                        image 'alpine:3'
+                    }
                 }
                 steps {
-                    sh 'echo "Building yyy"'
-                }                
-            }
-        }        
+                    sh 'echo "Building Finops assets"'
+                }
+            }               
+        }     
         stage('BuildSecops') {
             agent {
                 docker {
