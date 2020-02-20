@@ -11,7 +11,7 @@ pipeline {
                 sh 'echo "Building serverless artifacts"'
             }
         }
-        stage('BuildFinops') {
+        stage('BuildFinops notifications') {
             agent {
                 docker {
                     image 'alpine:3'
@@ -20,7 +20,28 @@ pipeline {
             steps {
                 sh 'echo "Building Finops assets"'
             }
-}
+        }
+        stage('BuildFinops Alarms') {
+            agent {
+                docker {
+                    image 'alpine:3'
+                }
+            }
+            matrix {
+                axes {
+                    axis {
+                        name 'Region'
+                        values 'us-east-1', 'eu-west-1'
+                    }
+                }
+                steps {
+                    sh 'echo "Building xxxx"'
+                }
+                steps {
+                    sh 'echo "Building yyy"'
+                }                
+            }
+        }        
         stage('BuildSecops') {
             agent {
                 docker {
