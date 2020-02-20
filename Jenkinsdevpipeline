@@ -2,6 +2,11 @@ pipeline {
     agent none
     stages {
         stage('BuildServerLess') {
+            agent {
+                node {
+                    label 'A Label'
+                }
+            }
             steps {
                 sh 'Building serverless artifacts'
             }
