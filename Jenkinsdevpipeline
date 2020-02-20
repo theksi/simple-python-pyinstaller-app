@@ -4,11 +4,11 @@ pipeline {
         stage('BuildServerLess') {
             agent {
                 docker {
-                    image 'python:2-alpine'
+                    image 'alpine:3'
                 }
             }
             steps {
-                sh 'Building serverless artifacts'
+                sh 'echo "Building serverless artifacts"'
             }
         }
 
