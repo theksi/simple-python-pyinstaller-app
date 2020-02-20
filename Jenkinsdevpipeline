@@ -30,16 +30,19 @@ pipeline {
                     }
                 }
             }
-            stage('BuildFinops Service-specific alerts') {
-                agent {
-                    docker {
-                        image 'alpine:3'
+            stages {
+                stage('BuildFinops Service-specific alerts') {
+                    agent {
+                        docker {
+                            image 'alpine:3'
+                        }
                     }
-                }
-                steps {
-                    sh 'echo "Building Finops assets"'
-                }
-            }               
+                    steps {
+                        sh 'echo "Building Finops assets"'
+                    }
+                }  
+            }
+             
         }     
         stage('BuildSecops') {
             agent {
