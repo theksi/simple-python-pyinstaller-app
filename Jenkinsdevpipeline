@@ -11,6 +11,26 @@ pipeline {
                 sh 'echo "Building serverless artifacts"'
             }
         }
+        stage('BuildFinops') {
+            agent {
+                docker {
+                    image 'alpine:3'
+                }
+            }
+            steps {
+                sh 'echo "Building Finops assets"'
+            }
+}
+        stage('BuildSecops') {
+            agent {
+                docker {
+                    image 'alpine:3'
+                }
+            }
+            steps {
+                sh 'echo "Building Secops assets"'
+            }
+}
 
     }
 }
