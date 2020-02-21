@@ -33,7 +33,7 @@ pipeline {
             }
         } 
         */
-        /*            
+                  
         stage('BuildSecops') {
             matrix {
                 agent any
@@ -52,6 +52,6 @@ pipeline {
                 }
             }  
         }
-        */
+        
     }
 }
