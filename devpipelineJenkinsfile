@@ -21,18 +21,17 @@ pipeline {
                     stage('Deploy Finops Assets') {
                         steps {
                             println "Deploying Finops assets on " + Region
-                        }
+                        }  
+                    }
+                    stage('Deploy Billing Alarms')  {
                         when { environment name : 'Region', value 'us-east-1'
                         }
-                        steps {
+                            steps {
                             println "Deploying billing alerts on " + Region
                         }
-                    }  
+                    }
                 }
             }             
-            steps {
-                println  "Building Finops assets"
-            }
         }
         stage('BuildFinops Alarms') {
             matrix {
