@@ -25,7 +25,7 @@ pipeline {
                             println "Building Finops assets on " + Region
                         }
                     }
-                    stage('Deploy Billing Alarms' {
+                    stage('Deploy Billing Alarms') {
                         when { environment name : 'Region', value 'us-east-1'}
                         steps {
                             println "Deploying billing alerts"
