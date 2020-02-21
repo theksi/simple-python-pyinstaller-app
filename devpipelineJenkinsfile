@@ -1,20 +1,16 @@
 pipeline {
     agent none
     stages {
-        stage('BuildServerLess') {
+        stage('Build ServerLess') {
             agent any
             steps {
-                sh 'echo "Building serverless artifacts"'
+                println 'echo "Building serverless artifacts"'
             }
         }
-        stage('BuildFinops notifications') {
-            agent {
-                docker {
-                    image 'alpine:3'
-                }
-            }
+        stage('Build Finops Base Assets') {
+            agent any
             steps {
-                sh 'echo "Building Finops assets"'
+                Println 'echo "Building Finops base assets"'
             }
         }
         stage('BuildFinops Alarms') {
@@ -26,27 +22,32 @@ pipeline {
                         values 'us-east-1', 'eu-west-1'
                     }
                 }
-            
                 stages {
                     stage('BuildFinops Service-specific alerts') {
                         steps {
-                            // echo "Building Finops assets"
                             println "Building Finops assets on " + Region
                         }
                     }  
                 }
-            }
-             
+            }      
         }     
         stage('BuildSecops') {
-            agent {
-                docker {
-                    image 'alpine:3'
+            matrix {
+                agent any
+                axes {
+                    axis {
+                        name 'Region'
+                        values 'us-east-1', 'eu-west-1'
+                    }
                 }
-            }
-            steps {
-                sh 'echo "Building Secops assets"'
-            }
+                stages {
+                    stage('Build secops base alerts') {
+                        steps {
+                            println "Building Secops assets in " + Region
+                        }
+                    }  
+                }
+            }  
 }
 
     }
