@@ -1,13 +1,15 @@
 pipeline {
     agent none
     stages {
+        /*
         stage('Build ServerLess') {
             agent any
             steps {
                 println  "Building serverless artifacts"
             }
         }
-        /*
+        */
+        
         stage('Deploy Assets') {
             matrix {
                 agent any
@@ -32,8 +34,8 @@ pipeline {
                 }
             }
         } 
-        */
-                  
+        
+         /*         
         stage('BuildSecops') {
             matrix {
                 agent any
@@ -52,6 +54,6 @@ pipeline {
                 }
             }  
         }
-        
+        */
     }
 }
