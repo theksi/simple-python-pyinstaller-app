@@ -28,11 +28,10 @@ pipeline {
                     stage('Deploy Billing Alarms') {
                         when { 
                             environment name: 'Region', value: 'us-east-1'
-                            steps {
-                                println "Deploying billing alerts on " + Region
                             }
+                        steps {
+                            println "Deploying billing alerts on " + Region
                         }
-
                     }  
                 }
             }
