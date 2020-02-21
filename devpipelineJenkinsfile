@@ -8,7 +8,6 @@ pipeline {
             }
         }
         stage('Deploy Assets') {
-            agent any
             matrix {
                 agent any
                 axes {
@@ -24,8 +23,7 @@ pipeline {
                         }  
                     }
                     stage('Deploy Billing Alarms')  {
-                        when { environment name : 'Region', value 'us-east-1'
-                        }
+                        when { environment name : 'Region', value 'us-east-1'}
                             steps {
                             println "Deploying billing alerts on " + Region
                         }
@@ -33,7 +31,6 @@ pipeline {
                 }
             }             
         }
-        stage('BuildFinops Alarms') {
             matrix {
                 agent any
                 axes {
@@ -50,10 +47,7 @@ pipeline {
                     }  
                 }
             }      
-        steps {
-            println "Helllllloooowwwwwww" 
-        }  
-        }  
+
         stage('BuildSecops') {
             matrix {
                 agent any
