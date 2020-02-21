@@ -23,6 +23,7 @@ pipeline {
         }
         stage('BuildFinops Alarms') {
             matrix {
+                agent any
                 axes {
                     axis {
                         name 'Region'
@@ -32,11 +33,6 @@ pipeline {
             
                 stages {
                     stage('BuildFinops Service-specific alerts') {
-                        agent {
-                            docker {
-                                image 'alpine:3'
-                            }
-                        }
                         steps {
                             // echo "Building Finops assets"
                             println "Building Finops assets on " + Region
