@@ -9,6 +9,27 @@ pipeline {
         }
         stage('Deploy Assets') {
             agent any
+            matrix {
+                agent any
+                axes {
+                    axis {
+                        name 'Region'
+                        values 'us-east-1', 'eu-west-1'
+                    }
+                }
+                stages {
+                    stage('Deploy Finops Assets') {
+                        steps {
+                            println "Deploying Finops assets on " + Region
+                        }
+                        when { environment name : 'Region', value 'us-east-1'
+                        }
+                        steps {
+                            println "Deploying billing alerts on " + Region
+                        }
+                    }  
+                }
+            }             
             steps {
                 println  "Building Finops assets"
             }
