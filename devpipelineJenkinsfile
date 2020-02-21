@@ -38,7 +38,7 @@ pipeline {
                             }
                         }
                         steps {
-                            sh 'echo "Building Finops assets"'
+                            echo "Building Finops assets"
                         }
                     }  
                 }
