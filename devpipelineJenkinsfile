@@ -24,30 +24,13 @@ pipeline {
                     }
                     stage('Deploy Billing Alarms')  {
                         when { environment name : 'Region', value 'us-east-1'}
-                            steps {
-                            println "Deploying billing alerts on " + Region
-                        }
+                        steps {
+                        println "Deploying billing alerts on " + Region
+                            }
                     }
                 }
             }             
-        }
-            matrix {
-                agent any
-                axes {
-                    axis {
-                        name 'Region'
-                        values 'us-east-1', 'eu-west-1'
-                    }
-                }
-                stages {
-                    stage('BuildFinops Service-specific alerts') {
-                        steps {
-                            println "Building Finops assets on " + Region
-                        }
-                    }  
-                }
-            }      
-
+        }     
         stage('BuildSecops') {
             matrix {
                 agent any
