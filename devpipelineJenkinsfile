@@ -38,7 +38,8 @@ pipeline {
                             }
                         }
                         steps {
-                            echo "Building Finops assets"
+                            // echo "Building Finops assets"
+                            println "Building Finops assets on " + Region
                         }
                     }  
                 }
