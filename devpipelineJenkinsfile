@@ -21,7 +21,6 @@ pipeline {
                         steps {
                             println "Building Finops assets on " + Region
                         }
-                        
                         when { environment name : 'Region', value 'us-east-1'
                         }
                         steps {
@@ -30,7 +29,8 @@ pipeline {
                         }
                     }  
                 }
-            }             
+            }
+        }             
         stage('BuildSecops') {
             matrix {
                 agent any
