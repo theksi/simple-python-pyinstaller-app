@@ -4,13 +4,13 @@ pipeline {
         stage('Build ServerLess') {
             agent any
             steps {
-                println 'echo "Building serverless artifacts"'
+                println  "Building serverless artifacts"
             }
         }
         stage('Build Finops Base Assets') {
             agent any
             steps {
-                Println 'echo "Building Finops base assets"'
+                Println  "Building Finops base assets"
             }
         }
         stage('BuildFinops Alarms') {
