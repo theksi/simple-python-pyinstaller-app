@@ -29,18 +29,19 @@ pipeline {
                         values 'us-east-1', 'eu-west-1'
                     }
                 }
-            }
-            stages {
-                stage('BuildFinops Service-specific alerts') {
-                    agent {
-                        docker {
-                            image 'alpine:3'
+            
+                stages {
+                    stage('BuildFinops Service-specific alerts') {
+                        agent {
+                            docker {
+                                image 'alpine:3'
+                            }
                         }
-                    }
-                    steps {
-                        sh 'echo "Building Finops assets"'
-                    }
-                }  
+                        steps {
+                            sh 'echo "Building Finops assets"'
+                        }
+                    }  
+                }
             }
              
         }     
