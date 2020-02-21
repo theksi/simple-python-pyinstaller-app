@@ -21,12 +21,12 @@ pipeline {
                         steps {
                             println "Building Finops assets on " + Region
                         }
-                        /*
+                        
                         when { environment name : 'Region', value 'us-east-1'
                         }
                         steps {
                             println "Deploying billing alerts"
-                        */
+                        
                         }
                     }  
                 }
