@@ -7,10 +7,10 @@ pipeline {
                 println  "Building serverless artifacts"
             }
         }
-        stage('Build Finops Base Assets') {
+        stage('Deploy Assets') {
             agent any
             steps {
-                println  "Building Finops base assets"
+                println  "Building Finops assets"
             }
         }
         stage('BuildFinops Alarms') {
@@ -30,7 +30,10 @@ pipeline {
                     }  
                 }
             }      
-        }     
+        } 
+            steps {
+                println "Helllllloooowwwwwww" 
+            }   
         stage('BuildSecops') {
             matrix {
                 agent any
