@@ -13,7 +13,7 @@ pipeline {
                 axes {
                     axis {
                         name 'Region'
-                        values 'us-east-1', 'eu-west-1'
+                        values 'us-east-1', 'eu-west-1', 'eu-west-2'
                     }
                 }
                 stages {
