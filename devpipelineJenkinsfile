@@ -10,7 +10,7 @@ pipeline {
         stage('Build Finops Base Assets') {
             agent any
             steps {
-                Println  "Building Finops base assets"
+                println  "Building Finops base assets"
             }
         }
         stage('BuildFinops Alarms') {
